@@ -19,9 +19,9 @@ public class CanvasPanel extends JPanel
       super.paint(g);
       Graphics2D g2d = (Graphics2D)g;
       
-      if(SSEEngine.getFullImage() != null)
+      if(SSEEngine.getCurTile() != null)
       {
-         g2d.drawImage(SSEEngine.getFullImage(), 0, 0, null);
+         g2d.drawImage(SSEEngine.getCurTile(), 0, 0, null);
       }
    }
 }
