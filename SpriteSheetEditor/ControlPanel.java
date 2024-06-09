@@ -22,16 +22,6 @@ public class ControlPanel extends JPanel implements ActionListener
       parent = p;
       setLayout(new GridLayout(4, 1));
       
-      loadB = new JButton("Load");
-      loadB.addActionListener(this);
-      loadB.setFocusable(false);
-      add(loadB);
-      
-      saveB = new JButton("Save");
-      saveB.addActionListener(this);
-      saveB.setFocusable(false);
-      add(saveB);
-      
       JPanel panel = new JPanel();
       panel.setLayout(new GridLayout(1, 6));
       widthF = new JTextField("Tile Width:");
@@ -59,6 +49,16 @@ public class ControlPanel extends JPanel implements ActionListener
       heightMB.setFocusable(false);
       panel.add(heightMB);
       add(panel);
+      
+      loadB = new JButton("Load");
+      loadB.addActionListener(this);
+      loadB.setFocusable(false);
+      add(loadB);
+      
+      saveB = new JButton("Save");
+      saveB.addActionListener(this);
+      saveB.setFocusable(false);
+      add(saveB);
       
       update();
    }
