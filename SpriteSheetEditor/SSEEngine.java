@@ -25,9 +25,12 @@ public class SSEEngine
    public static BufferedImage getCurTile(){return curTile;}
    public static BufferedImage getFullImage(){return fullImage;}
    public static BufferedImage getMapImage(){return mapImage;}
+   public static int getXLoc(){return xLoc;}
+   public static int getYLoc(){return yLoc;}
    
    public static void setTileSize(int w, int h){tileWidth = w; tileHeight = h; setDependentImages(xLoc, yLoc);}
    public static void setFullImage(BufferedImage img){fullImage = img; setDependentImages(xLoc, yLoc);}
+   public static void setLoc(int x, int y){xLoc = x; yLoc = y;}
    
    public static void load(Component component)
    {

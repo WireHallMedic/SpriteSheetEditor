@@ -46,6 +46,7 @@ public class SSEMain extends JFrame implements ActionListener
    public void actionPerformed(ActionEvent ae)
    {
       canvasPanel.repaint();
+      infoPanel.update();
    }
    
    public static void main(String[] args)
