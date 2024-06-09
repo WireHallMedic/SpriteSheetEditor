@@ -9,6 +9,7 @@ public class CanvasPanel extends JPanel implements MouseMotionListener
 {
    private SSEMain parent;
    private int sizeMultiplier = 1;
+   private BufferedImage curTile;
    private static int[] mouseLoc = {-1, -1};
    private static Color locColor = Color.BLACK;
    private static final int BUFFER_SIZE_PX = 10;
@@ -20,6 +21,7 @@ public class CanvasPanel extends JPanel implements MouseMotionListener
       super();
       parent = p;
       addMouseMotionListener(this);
+      curTile = null;
    }
    
    @Override
@@ -27,41 +29,58 @@ public class CanvasPanel extends JPanel implements MouseMotionListener
    {
       super.paint(g);
       Graphics2D g2d = (Graphics2D)g;
-      BufferedImage curTile = SSEEngine.getCurTile();
+      curTile = SSEEngine.getCurTile();
       
       if(curTile != null)
       {
-         calcSizeMultiplier(curTile);
+         calcSizeMultiplier();
+         updateColorLoc();
          g2d.drawImage(curTile, BUFFER_SIZE_PX, BUFFER_SIZE_PX, curTile.getWidth() * sizeMultiplier, curTile.getHeight() * sizeMultiplier, null);
       }
    }
    
-   public void calcSizeMultiplier(BufferedImage img)
+   public void calcSizeMultiplier()
    {
-      int maxMultWide = (this.getWidth() - (BUFFER_SIZE_PX * 2)) / img.getWidth();
-      int maxMultHigh = (this.getHeight() - (BUFFER_SIZE_PX * 2)) / img.getHeight();
+      if(curTile == null)
+         return;
+      int maxMultWide = (this.getWidth() - (BUFFER_SIZE_PX * 2)) / curTile.getWidth();
+      int maxMultHigh = (this.getHeight() - (BUFFER_SIZE_PX * 2)) / curTile.getHeight();
       sizeMultiplier = Math.min(maxMultWide, maxMultHigh);
    }
    
    
    
-   // keep track of mouse location
+   // keep track of mouse location and update current color under mouse
    public void mouseDragged(MouseEvent me){}
    public void mouseMoved(MouseEvent me)
    {
-      BufferedImage curTile = SSEEngine.getCurTile();
-      int xLoc = (me.getX() - BUFFER_SIZE_PX) / sizeMultiplier;
-      int yLoc = (me.getY() - BUFFER_SIZE_PX) / sizeMultiplier;
-      if(curTile == null || xLoc < 0 || xLoc > curTile.getWidth() ||
-         yLoc < 0 || yLoc > curTile.getHeight())
+      int xLoc = (me.getX() - BUFFER_SIZE_PX);
+      int yLoc = (me.getY() - BUFFER_SIZE_PX);
+      if(curTile == null || xLoc < 0 || xLoc / sizeMultiplier >= curTile.getWidth() ||
+         yLoc < 0 || yLoc / sizeMultiplier >= curTile.getHeight())
       {
          mouseLoc[0] = -1;
          mouseLoc[1] = -1;
       }
       else
       {
-         mouseLoc[0] = xLoc;
-         mouseLoc[1] = yLoc;
+         mouseLoc[0] = xLoc / sizeMultiplier;
+         mouseLoc[1] = yLoc / sizeMultiplier;
       }
+   }
+   
+   public void updateColorLoc()
+   {
+      if(curTile == null || mouseLoc[0] < 0 || mouseLoc[1] < 0)
+         locColor = null;
+      else
+         locColor = new Color(curTile.getRGB(mouseLoc[0], mouseLoc[1]));
+   }
+   
+   public static String getColorString()
+   {
+      if(locColor == null)
+         return "";
+      return String.format("%d, %d, %d, %d", locColor.getRed(), locColor.getGreen(), locColor.getBlue(), locColor.getAlpha());
    }
 }

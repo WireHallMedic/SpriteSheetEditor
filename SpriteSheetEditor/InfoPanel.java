@@ -46,6 +46,6 @@ public class InfoPanel extends JPanel
       mapPanel.repaint();
       tileLocationTF.setText("Tile Location: " + SSEEngine.getXLoc() + ", " + SSEEngine.getYLoc());
       spriteLocationTF.setText("Sprite Location: " + CanvasPanel.getMouseLoc()[0] + ", " + CanvasPanel.getMouseLoc()[1]);
-      colorTF.setText("Color at Location: ");
+      colorTF.setText("Color at Location: " + CanvasPanel.getColorString());
    }
 }
