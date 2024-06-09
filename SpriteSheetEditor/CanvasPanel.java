@@ -11,6 +11,17 @@ public class CanvasPanel extends JPanel
    {
       super();
       parent = p;
-      setBackground(Color.RED);
+   }
+   
+   @Override
+   public void paint(Graphics g)
+   {
+      super.paint(g);
+      Graphics2D g2d = (Graphics2D)g;
+      
+      if(SSEEngine.fullImage != null)
+      {
+         g2d.drawImage(SSEEngine.fullImage, 0, 0, null);
+      }
    }
 }

@@ -2,8 +2,9 @@ package SpriteSheetEditor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class SSEMain extends JFrame
+public class SSEMain extends JFrame implements ActionListener
 {
    public static final int WIDTH = 1600;
    public static final int HEIGHT = 1000;
@@ -20,6 +21,8 @@ public class SSEMain extends JFrame
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       populate();
       setVisible(true);
+      javax.swing.Timer timer = new javax.swing.Timer(1000 / 30, this);
+      timer.start();
    }
    
    private void populate()
@@ -38,6 +41,11 @@ public class SSEMain extends JFrame
       anonPanel.add(palettePanel);
       anonPanel.add(controlPanel);
       add(anonPanel);
+   }
+   
+   public void actionPerformed(ActionEvent ae)
+   {
+      canvasPanel.repaint();
    }
    
    public static void main(String[] args)
