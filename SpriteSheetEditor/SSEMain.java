@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class SSEMain extends JFrame implements ActionListener
+public class SSEMain extends JFrame implements ActionListener, KeyListener
 {
    public static final int WIDTH = 1600;
    public static final int HEIGHT = 1000;
@@ -22,6 +22,7 @@ public class SSEMain extends JFrame implements ActionListener
       populate();
       setVisible(true);
       javax.swing.Timer timer = new javax.swing.Timer(1000 / 30, this);
+      addKeyListener(this);
       timer.start();
    }
    
@@ -41,6 +42,11 @@ public class SSEMain extends JFrame implements ActionListener
       anonPanel.add(palettePanel);
       anonPanel.add(controlPanel);
       add(anonPanel);
+      
+      canvasPanel.addKeyListener(this);
+      palettePanel.addKeyListener(this);
+      controlPanel.addKeyListener(this);
+      infoPanel.addKeyListener(this);
    }
    
    public void actionPerformed(ActionEvent ae)
@@ -48,6 +54,25 @@ public class SSEMain extends JFrame implements ActionListener
       canvasPanel.repaint();
       infoPanel.update();
    }
+   
+   public void keyPressed(KeyEvent ke)
+   {
+      int newX = SSEEngine.getXLoc();
+      int newY = SSEEngine.getYLoc();
+      
+      switch(ke.getKeyCode())
+      {
+         case KeyEvent.VK_UP :      newY--; break;
+         case KeyEvent.VK_DOWN :    newY++; break;
+         case KeyEvent.VK_LEFT :    newX--; break;
+         case KeyEvent.VK_RIGHT :   newX++; break;
+      }
+      System.out.println("Key pressed");
+      SSEEngine.setLoc(newX, newY);
+   }
+   
+   public void keyTyped(KeyEvent ke){}
+   public void keyReleased(KeyEvent ke){}
    
    public static void main(String[] args)
    {

@@ -27,6 +27,8 @@ public class SSEEngine
    public static BufferedImage getMapImage(){return mapImage;}
    public static int getXLoc(){return xLoc;}
    public static int getYLoc(){return yLoc;}
+   public static int getTileWidth(){return tileWidth;}
+   public static int getTileHeight(){return tileHeight;}
    
    public static void setTileSize(int w, int h){tileWidth = w; tileHeight = h; setDependentImages(xLoc, yLoc);}
    public static void setFullImage(BufferedImage img){fullImage = img; setDependentImages(xLoc, yLoc);}
