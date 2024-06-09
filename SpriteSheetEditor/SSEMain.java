@@ -53,6 +53,7 @@ public class SSEMain extends JFrame implements ActionListener, KeyListener
    {
       canvasPanel.repaint();
       infoPanel.update();
+      palettePanel.update();
    }
    
    public void keyPressed(KeyEvent ke)

@@ -16,6 +16,7 @@ public class SSEEngine
    private static BufferedImage mapImage = null;
    private static int xLoc = 0;
    private static int yLoc = 0;
+   private static Color curColor = Color.WHITE;
    
    private static int fullImageWidth = 0;
    private static int fullImageHeight = 0;
@@ -134,25 +135,14 @@ public class SSEEngine
          return 0;
       return fullImage.getRGB(x, y);
    }
-   /*
-   public static BufferedImage getSplit()
+
+   public static void setCurColor(Color c)
    {
-      // new image a little bigger than the original
-      int newWidth = 1 + fullImageWidth + (fullImageWidth / tileWidth);
-      int newHeight = 1 + fullImageHeight + (fullImageHeight / tileWidth);
-      int greyVal = Color.GRAY.getRGB();
-      BufferedImage splitCopy = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
-      // initialize it grey
-      for(int x = 0; x < newWidth; x++)
-      for(int y = 0; y < newHeight; y++)
-      {
-         splitCopy.setRGB(x, y, greyVal);
-      }
-      for(int x = 0; x < fullImageWidth; x++)
-      for(int y = 0; y < fullImageHeight; y++)
-      {
-         splitCopy.setRGB(x + 1 + (x / tileWidth), y + 1 + (y / tileHeight), getPixelRGB(x, y));
-      }
-      return splitCopy;
-   }*/
+      curColor = c;
+   }
+   
+   public static Color getCurColor()
+   {
+      return curColor;
+   }
 }
