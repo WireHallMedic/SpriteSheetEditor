@@ -7,10 +7,10 @@ public class SSEMain extends JFrame
 {
    public static final int WIDTH = 1600;
    public static final int HEIGHT = 1000;
-   private JPanel canvasPanel;
-   private JPanel palettePanel;
-   private JPanel controlPanel;
-   private JPanel infoPanel;
+   private CanvasPanel canvasPanel;
+   private PalettePanel palettePanel;
+   private ControlPanel controlPanel;
+   private InfoPanel infoPanel;
    
    public SSEMain()
    {
@@ -24,14 +24,10 @@ public class SSEMain extends JFrame
    
    private void populate()
    {
-      canvasPanel = new JPanel();
-      canvasPanel.add(new JLabel("Canvas"));
-      palettePanel = new JPanel();
-      palettePanel.add(new JLabel("Palette"));
-      controlPanel = new JPanel();
-      controlPanel.add(new JLabel("Control"));
-      infoPanel = new JPanel();
-      infoPanel.add(new JLabel("Info"));
+      canvasPanel = new CanvasPanel(this);
+      palettePanel = new PalettePanel(this);
+      controlPanel = new ControlPanel(this);
+      infoPanel = new InfoPanel(this);
       
       setLayout(new GridLayout(1, 2));
       add(canvasPanel);
