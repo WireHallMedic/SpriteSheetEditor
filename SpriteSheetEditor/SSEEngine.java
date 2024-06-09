@@ -11,20 +11,23 @@ import java.awt.*;
 
 public class SSEEngine
 {
-   public static BufferedImage fullImage = null;
-   public static BufferedImage curTile = null;
-   public static BufferedImage mapImage = null;
+   private static BufferedImage fullImage = null;
+   private static BufferedImage curTile = null;
+   private static BufferedImage mapImage = null;
+   private static int xLoc = 0;
+   private static int yLoc = 0;
    
    private static int fullImageWidth = 0;
    private static int fullImageHeight = 0;
    private static int tileWidth = 24;
    private static int tileHeight = 24;
    
-   public static int getTileWidth(){return tileWidth;}
-   public static int getTileHeight(){return tileHeight;}
    public static BufferedImage getCurTile(){return curTile;}
+   public static BufferedImage getFullImage(){return fullImage;}
+   public static BufferedImage getMapImage(){return mapImage;}
    
-   public static void setTileSize(int w, int h){tileWidth = w; tileHeight = h;}
+   public static void setTileSize(int w, int h){tileWidth = w; tileHeight = h; setDependentImages(xLoc, yLoc);}
+   public static void setFullImage(BufferedImage img){fullImage = img; setDependentImages(xLoc, yLoc);}
    
    public static void load(Component component)
    {
@@ -48,7 +51,7 @@ public class SSEEngine
             fullImageWidth = 0;
             fullImageHeight = 0;
          }
-  //       setDependentImages(0, 0, magnification);
+         setDependentImages(0, 0);
       }
    }
    /*
@@ -58,8 +61,8 @@ public class SSEEngine
       tileHeight = SSIControlPanel.getTileHeight();
       setDependentImages(tileX, tileY, magnification);
    }
-   
-   private static void setDependentImages(int tileX, int tileY, int magnification)
+   */
+   private static void setDependentImages(int tileX, int tileY)
    {
       if(fullImage == null)
       {
@@ -68,14 +71,14 @@ public class SSEEngine
       }
       else
       {
-         setCurTile(tileX, tileY, magnification);
+         setCurTile(tileX, tileY);
          setMapImage(tileX, tileY);
       }
    }
    
-   private static void setCurTile(int tileLocX, int tileLocY, int magnification)
+   private static void setCurTile(int tileLocX, int tileLocY)
    {
-      BufferedImage newImage = new BufferedImage(tileWidth * magnification, tileHeight * magnification, BufferedImage.TYPE_INT_ARGB);
+      BufferedImage newImage = new BufferedImage(tileWidth, tileHeight, BufferedImage.TYPE_INT_ARGB);
       int xOffset = tileLocX * tileWidth;
       int yOffset = tileLocY * tileHeight;
       int curRGB = 0;
@@ -84,11 +87,7 @@ public class SSEEngine
       for(int y = 0; y < tileHeight; y++)
       {
          curRGB = getPixelRGB(x + xOffset, y + yOffset);
-         for(int xx = 0; xx < magnification; xx++)
-         for(int yy = 0; yy < magnification; yy++)
-         {
-            newImage.setRGB((x * magnification) + xx, (y * magnification) + yy, curRGB);
-         }
+         newImage.setRGB(x, y, curRGB);
       }
       curTile = newImage;
    }
@@ -113,7 +112,7 @@ public class SSEEngine
          return 0;
       return fullImage.getRGB(x, y);
    }
-   
+   /*
    public static BufferedImage getSplit()
    {
       // new image a little bigger than the original

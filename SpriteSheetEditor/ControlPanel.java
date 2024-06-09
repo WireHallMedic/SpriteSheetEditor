@@ -27,13 +27,10 @@ public class ControlPanel extends JPanel implements ActionListener
       add(saveB);
       
       JPanel panel = new JPanel();
-      panel.setLayout(new GridLayout(1, 2));
+      panel.setLayout(new GridLayout(1, 4));
       panel.add(new JLabel("Tile Width"));
       widthF = new JTextField("16");
       panel.add(widthF);
-      add(panel);
-      
-      panel = new JPanel();
       panel.setLayout(new GridLayout(1, 2));
       panel.add(new JLabel("Tile Height"));
       heightF = new JTextField("8");
