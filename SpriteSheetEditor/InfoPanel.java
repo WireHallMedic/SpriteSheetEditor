@@ -32,7 +32,7 @@ public class InfoPanel extends JPanel
       spriteLocationTF.setEditable(false);
       spriteLocationTF.setFocusable(false);
       panel.add(spriteLocationTF);
-      colorTF = new JTextField("Color: ");
+      colorTF = new JTextField("Color at Location: ");
       colorTF.setEditable(false);
       colorTF.setFocusable(false);
       panel.add(colorTF);
@@ -45,5 +45,7 @@ public class InfoPanel extends JPanel
    {
       mapPanel.repaint();
       tileLocationTF.setText("Tile Location: " + SSEEngine.getXLoc() + ", " + SSEEngine.getYLoc());
+      spriteLocationTF.setText("Sprite Location: " + SSEEngine.getXLoc() + ", " + SSEEngine.getYLoc());
+      colorTF.setText("Color at Location: " + SSEEngine.getXLoc() + ", " + SSEEngine.getYLoc());
    }
 }
