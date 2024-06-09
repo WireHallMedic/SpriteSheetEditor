@@ -53,6 +53,6 @@ public class PalettePanel extends JPanel implements ActionListener
    
    public void actionPerformed(ActionEvent ae)
    {
-   
+      new ColorChooser(SSEEngine.getCurColor());
    }
 }
