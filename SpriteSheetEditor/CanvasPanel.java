@@ -36,6 +36,17 @@ public class CanvasPanel extends JPanel implements MouseMotionListener
          calcSizeMultiplier();
          updateColorLoc();
          g2d.drawImage(curTile, BUFFER_SIZE_PX, BUFFER_SIZE_PX, curTile.getWidth() * sizeMultiplier, curTile.getHeight() * sizeMultiplier, null);
+         Color gridColor = ControlPanel.getGridColor();
+         g2d.setColor(gridColor);
+         if(gridColor != null)
+         {
+            for(int x = 0; x <= curTile.getWidth(); x++)
+               g2d.drawLine(BUFFER_SIZE_PX + (x * sizeMultiplier), BUFFER_SIZE_PX, 
+                            BUFFER_SIZE_PX + (x * sizeMultiplier), BUFFER_SIZE_PX + (curTile.getHeight() * sizeMultiplier));
+            for(int y = 0; y <= curTile.getHeight(); y++)
+               g2d.drawLine(BUFFER_SIZE_PX, BUFFER_SIZE_PX + (y * sizeMultiplier), 
+                            BUFFER_SIZE_PX + (curTile.getWidth() * sizeMultiplier), BUFFER_SIZE_PX + (y * sizeMultiplier));
+         }
       }
    }
    

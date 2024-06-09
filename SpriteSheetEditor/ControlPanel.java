@@ -15,6 +15,13 @@ public class ControlPanel extends JPanel implements ActionListener
    private JButton widthMB;
    private JButton heightPB;
    private JButton heightMB;
+   private JRadioButton noGridB;
+   private JRadioButton whiteGridB;
+   private JRadioButton blackGridB;
+   private JRadioButton greyGridB;
+   private static Color gridColor = null;
+   
+   public static Color getGridColor(){return gridColor;}
    
    public ControlPanel(SSEMain p)
    {
@@ -50,6 +57,32 @@ public class ControlPanel extends JPanel implements ActionListener
       panel.add(heightMB);
       add(panel);
       
+      panel = new JPanel();
+      panel.setLayout(new GridLayout(1, 6));
+      noGridB = new JRadioButton("No Grid");
+      noGridB.setFocusable(false);
+      noGridB.setSelected(true);
+      noGridB.addActionListener(this);
+      panel.add(noGridB);
+      whiteGridB = new JRadioButton("White Grid");
+      whiteGridB.setFocusable(false);
+      whiteGridB.addActionListener(this);
+      panel.add(whiteGridB);
+      blackGridB = new JRadioButton("Black Grid");
+      blackGridB.setFocusable(false);
+      blackGridB.addActionListener(this);
+      panel.add(blackGridB);
+      greyGridB = new JRadioButton("Grey Grid");
+      greyGridB.setFocusable(false);
+      greyGridB.addActionListener(this);
+      panel.add(greyGridB);
+      ButtonGroup gridGroup = new ButtonGroup();
+      gridGroup.add(noGridB);
+      gridGroup.add(whiteGridB);
+      gridGroup.add(blackGridB);
+      gridGroup.add(greyGridB);
+      add(panel);
+      
       loadB = new JButton("Load");
       loadB.addActionListener(this);
       loadB.setFocusable(false);
@@ -75,6 +108,8 @@ public class ControlPanel extends JPanel implements ActionListener
       int heightMod = 0;
       if(ae.getSource() == loadB)
          SSEEngine.load(this);
+      if(ae.getSource() == saveB)
+         SSEEngine.save(this);
       if(ae.getSource() == widthPB)
          widthMod = 1;
       if(ae.getSource() == widthMB)
@@ -83,6 +118,14 @@ public class ControlPanel extends JPanel implements ActionListener
          heightMod = 1;
       if(ae.getSource() == heightMB)
          heightMod = -1;
+      if(ae.getSource() == noGridB)
+         gridColor = null;
+      if(ae.getSource() == whiteGridB)
+         gridColor = Color.WHITE;
+      if(ae.getSource() == blackGridB)
+         gridColor = Color.BLACK;
+      if(ae.getSource() == greyGridB)
+         gridColor = Color.GRAY;
       
       if(widthMod != 0 || heightMod != 0)
       {

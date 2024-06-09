@@ -36,9 +36,10 @@ public class SSEEngine
    
    public static void load(Component component)
    {
-      JFileChooser fc = new JFileChooser("./SpriteSheetInspector");
+      JFileChooser fc = new JFileChooser("./SpriteSheetEditor");
       File workingDirectory = new File(System.getProperty("user.dir"));
       fc.setCurrentDirectory(workingDirectory);
+      fc.setFileFilter(new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes()));
       int returnVal = fc.showOpenDialog(component);
       
       if(returnVal == JFileChooser.APPROVE_OPTION)
@@ -59,14 +60,30 @@ public class SSEEngine
          setDependentImages();
       }
    }
-   /*
-   public static void update(int tileX, int tileY, int magnification)
+   
+   public static void save(Component component)
    {
-      tileWidth = SSIControlPanel.getTileWidth();
-      tileHeight = SSIControlPanel.getTileHeight();
-      setDependentImages(tileX, tileY, magnification);
+      JFileChooser fc = new JFileChooser("./SpriteSheetEditor");
+      File workingDirectory = new File(System.getProperty("user.dir"));
+      fc.setCurrentDirectory(workingDirectory);
+      fc.setFileFilter(new FileNameExtensionFilter("PNG file","png"));
+      int returnVal = fc.showSaveDialog(component);
+      if(returnVal == JFileChooser.APPROVE_OPTION)
+      {
+         try
+         {
+            File outfile = fc.getSelectedFile();
+            if(!outfile.getName().endsWith(".png"))
+               outfile = new File(outfile.getName() + ".png");
+            ImageIO.write(fullImage, "png", outfile);
+         }
+         catch(Exception ex)
+         {
+            System.out.println(ex.toString());
+         }
+      }
    }
-   */
+   
    private static void setDependentImages()
    {
       if(fullImage == null)
