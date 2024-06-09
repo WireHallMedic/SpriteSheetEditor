@@ -67,7 +67,6 @@ public class SSEMain extends JFrame implements ActionListener, KeyListener
          case KeyEvent.VK_LEFT :    newX--; break;
          case KeyEvent.VK_RIGHT :   newX++; break;
       }
-      System.out.println("Key pressed");
       SSEEngine.setLoc(newX, newY);
    }
    

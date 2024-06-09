@@ -30,9 +30,9 @@ public class SSEEngine
    public static int getTileWidth(){return tileWidth;}
    public static int getTileHeight(){return tileHeight;}
    
-   public static void setTileSize(int w, int h){tileWidth = w; tileHeight = h; setDependentImages(xLoc, yLoc);}
-   public static void setFullImage(BufferedImage img){fullImage = img; setDependentImages(xLoc, yLoc);}
-   public static void setLoc(int x, int y){xLoc = x; yLoc = y;}
+   public static void setTileSize(int w, int h){tileWidth = w; tileHeight = h; setDependentImages();}
+   public static void setFullImage(BufferedImage img){fullImage = img; setDependentImages();}
+   public static void setLoc(int x, int y){xLoc = x; yLoc = y; setDependentImages();}
    
    public static void load(Component component)
    {
@@ -56,7 +56,7 @@ public class SSEEngine
             fullImageWidth = 0;
             fullImageHeight = 0;
          }
-         setDependentImages(0, 0);
+         setDependentImages();
       }
    }
    /*
@@ -67,7 +67,7 @@ public class SSEEngine
       setDependentImages(tileX, tileY, magnification);
    }
    */
-   private static void setDependentImages(int tileX, int tileY)
+   private static void setDependentImages()
    {
       if(fullImage == null)
       {
@@ -76,8 +76,8 @@ public class SSEEngine
       }
       else
       {
-         setCurTile(tileX, tileY);
-         setMapImage(tileX, tileY);
+         setCurTile(xLoc, yLoc);
+         setMapImage(xLoc, yLoc);
       }
    }
    

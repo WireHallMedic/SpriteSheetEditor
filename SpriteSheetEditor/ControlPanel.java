@@ -24,10 +24,12 @@ public class ControlPanel extends JPanel implements ActionListener
       
       loadB = new JButton("Load");
       loadB.addActionListener(this);
+      loadB.setFocusable(false);
       add(loadB);
       
       saveB = new JButton("Save");
       saveB.addActionListener(this);
+      saveB.setFocusable(false);
       add(saveB);
       
       JPanel panel = new JPanel();

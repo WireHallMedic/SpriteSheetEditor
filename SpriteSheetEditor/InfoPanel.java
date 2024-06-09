@@ -44,5 +44,6 @@ public class InfoPanel extends JPanel
    public void update()
    {
       mapPanel.repaint();
+      tileLocationTF.setText("Tile Location: " + SSEEngine.getXLoc() + ", " + SSEEngine.getYLoc());
    }
 }
