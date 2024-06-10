@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 
-public class CanvasPanel extends JPanel implements MouseMotionListener
+public class CanvasPanel extends JPanel implements MouseMotionListener, MouseListener
 {
    private SSEMain parent;
    private int sizeMultiplier = 1;
@@ -21,6 +21,7 @@ public class CanvasPanel extends JPanel implements MouseMotionListener
       super();
       parent = p;
       addMouseMotionListener(this);
+      addMouseListener(this);
       curTile = null;
    }
    
@@ -59,11 +60,19 @@ public class CanvasPanel extends JPanel implements MouseMotionListener
       sizeMultiplier = Math.min(maxMultWide, maxMultHigh);
    }
    
-   
-   
    // keep track of mouse location and update current color under mouse
-   public void mouseDragged(MouseEvent me){}
+   public void mouseDragged(MouseEvent me)
+   {
+      updateMouseLoc(me);
+      SSEEngine.writeColor(mouseLoc[0], mouseLoc[1]);
+   }
+   
    public void mouseMoved(MouseEvent me)
+   {
+      updateMouseLoc(me);
+   }
+   
+   private void updateMouseLoc(MouseEvent me)
    {
       int xLoc = (me.getX() - BUFFER_SIZE_PX);
       int yLoc = (me.getY() - BUFFER_SIZE_PX);
@@ -78,6 +87,18 @@ public class CanvasPanel extends JPanel implements MouseMotionListener
          mouseLoc[0] = xLoc / sizeMultiplier;
          mouseLoc[1] = yLoc / sizeMultiplier;
       }
+   }
+   
+   public void mousePressed(MouseEvent me){}
+   public void mouseClicked(MouseEvent me){}
+   public void mouseEntered(MouseEvent me){}
+   public void mouseExited(MouseEvent me){}
+   public void mouseReleased(MouseEvent me)
+   {
+      if(me.getButton() == me.BUTTON1)
+         SSEEngine.writeColor(mouseLoc[0], mouseLoc[1]);
+      if(me.getButton() == me.BUTTON3)
+         SSEEngine.readColor(mouseLoc[0], mouseLoc[1]);
    }
    
    public void updateColorLoc()

@@ -135,6 +135,14 @@ public class SSEEngine
          return 0;
       return fullImage.getRGB(x, y);
    }
+   
+   private static void setPixelColor(int x, int y, Color c)
+   {
+      if(x < 0 || x >= fullImageWidth ||
+         y < 0 || y >= fullImageHeight)
+         return;
+      fullImage.setRGB(x, y, c.getRGB());
+   }
 
    public static void setCurColor(Color c)
    {
@@ -144,5 +152,20 @@ public class SSEEngine
    public static Color getCurColor()
    {
       return curColor;
+   }
+   
+   public static void readColor(int x, int y)
+   {
+      int xIndex = x + (xLoc * tileWidth);
+      int yIndex = y + (yLoc * tileHeight);
+      setCurColor(new Color(getPixelRGB(xIndex, yIndex)));
+   }
+   
+   public static void writeColor(int x, int y)
+   {
+      int xIndex = x + (xLoc * tileWidth);
+      int yIndex = y + (yLoc * tileHeight);
+      setPixelColor(xIndex, yIndex, curColor);
+      setDependentImages();
    }
 }
