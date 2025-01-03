@@ -161,11 +161,16 @@ public class SSEEngine
       setCurColor(new Color(getPixelRGB(xIndex, yIndex)));
    }
    
-   public static void writeColor(int x, int y)
+   public static void writeColor(int x, int y, Color c)
    {
       int xIndex = x + (xLoc * tileWidth);
       int yIndex = y + (yLoc * tileHeight);
-      setPixelColor(xIndex, yIndex, curColor);
+      setPixelColor(xIndex, yIndex, c);
       setDependentImages();
+   }
+   
+   public static void writeColor(int x, int y)
+   {
+      writeColor(x, y, curColor);
    }
 }

@@ -3,6 +3,7 @@ package SpriteSheetEditor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
 
 public class ControlPanel extends JPanel implements ActionListener
 {
@@ -24,6 +25,7 @@ public class ControlPanel extends JPanel implements ActionListener
    private JRadioButton fillB;
    private JButton copyB;
    private JButton pasteB;
+   private static BufferedImage copiedImage = null;
    private static Color gridColor = null;
    
    public static Color getGridColor(){return gridColor;}
