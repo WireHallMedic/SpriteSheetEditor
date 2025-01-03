@@ -49,10 +49,21 @@ public class ControlPanel extends JPanel implements ActionListener
       ButtonGroup drawTypeGroup = new ButtonGroup();
       drawTypeGroup.add(drawB);
       drawTypeGroup.add(fillB);
+      panel.add(new JLabel(""));
+      copyB = new JButton("Copy Tile");
+      copyB.addActionListener(this);
+      copyB.setFocusable(false);
+      panel.add(copyB);
+      pasteB = new JButton("Paste Tile");
+      pasteB.addActionListener(this);
+      pasteB.setEnabled(false);
+      pasteB.setFocusable(false);
+      
+      panel.add(pasteB);
       add(panel);
       
       panel = new JPanel();
-      panel.setLayout(new GridLayout(1, 6));
+      panel.setLayout(new GridLayout(1, 7));
       widthF = new JTextField("Tile Width:");
       widthF.setEditable(false);
       widthF.setFocusable(false);
@@ -65,6 +76,7 @@ public class ControlPanel extends JPanel implements ActionListener
       widthMB.addActionListener(this);
       widthMB.setFocusable(false);
       panel.add(widthMB);
+      panel.add(new JLabel(""));
       heightF = new JTextField("Tile Height:");
       heightF.setEditable(false);
       heightF.setFocusable(false);
