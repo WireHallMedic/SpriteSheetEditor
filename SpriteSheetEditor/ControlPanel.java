@@ -20,6 +20,10 @@ public class ControlPanel extends JPanel implements ActionListener
    private JRadioButton blackGridB;
    private JRadioButton greyGridB;
    private JRadioButton cyanGridB;
+   private JRadioButton drawB;
+   private JRadioButton fillB;
+   private JButton copyB;
+   private JButton pasteB;
    private static Color gridColor = null;
    
    public static Color getGridColor(){return gridColor;}
@@ -28,9 +32,26 @@ public class ControlPanel extends JPanel implements ActionListener
    {
       super();
       parent = p;
-      setLayout(new GridLayout(4, 1));
+      setLayout(new GridLayout(5, 1));
       
       JPanel panel = new JPanel();
+      panel.setLayout(new GridLayout(1, 6));
+      panel.add(new JLabel("Cursor Action:", SwingConstants.CENTER));
+      drawB = new JRadioButton("Draw");
+      drawB.setFocusable(false);
+      drawB.setSelected(true);
+      drawB.addActionListener(this);
+      panel.add(drawB);
+      fillB = new JRadioButton("Fill");
+      fillB.setFocusable(false);
+      fillB.addActionListener(this);
+      panel.add(fillB);
+      ButtonGroup drawTypeGroup = new ButtonGroup();
+      drawTypeGroup.add(drawB);
+      drawTypeGroup.add(fillB);
+      add(panel);
+      
+      panel = new JPanel();
       panel.setLayout(new GridLayout(1, 6));
       widthF = new JTextField("Tile Width:");
       widthF.setEditable(false);
