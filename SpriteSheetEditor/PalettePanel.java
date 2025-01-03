@@ -15,7 +15,7 @@ public class PalettePanel extends JPanel implements ActionListener
       super();
       parent = p;
       setLayout(new GridLayout(6, 3));
-      add(new JLabel("Current Color:"));
+      add(new JLabel("Current Color:", SwingConstants.CENTER));
       curColorPanel = new JPanel();
       add(curColorPanel);
       setColorB = new JButton("Custom Color");
