@@ -19,6 +19,7 @@ public class ControlPanel extends JPanel implements ActionListener
    private JRadioButton whiteGridB;
    private JRadioButton blackGridB;
    private JRadioButton greyGridB;
+   private JRadioButton cyanGridB;
    private static Color gridColor = null;
    
    public static Color getGridColor(){return gridColor;}
@@ -76,11 +77,16 @@ public class ControlPanel extends JPanel implements ActionListener
       greyGridB.setFocusable(false);
       greyGridB.addActionListener(this);
       panel.add(greyGridB);
+      cyanGridB = new JRadioButton("Cyan Grid");
+      cyanGridB.setFocusable(false);
+      cyanGridB.addActionListener(this);
+      panel.add(cyanGridB);
       ButtonGroup gridGroup = new ButtonGroup();
       gridGroup.add(noGridB);
       gridGroup.add(whiteGridB);
       gridGroup.add(blackGridB);
       gridGroup.add(greyGridB);
+      gridGroup.add(cyanGridB);
       add(panel);
       
       loadB = new JButton("Load");
@@ -126,6 +132,8 @@ public class ControlPanel extends JPanel implements ActionListener
          gridColor = Color.BLACK;
       if(ae.getSource() == greyGridB)
          gridColor = Color.GRAY;
+      if(ae.getSource() == cyanGridB)
+         gridColor = Color.CYAN;
       
       if(widthMod != 0 || heightMod != 0)
       {
