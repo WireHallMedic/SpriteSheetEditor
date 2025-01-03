@@ -36,8 +36,8 @@ public class InfoPanel extends JPanel
       colorTF.setEditable(false);
       colorTF.setFocusable(false);
       panel.add(colorTF);
-      panel.add(new JPanel());
-      panel.add(new JPanel());
+      panel.add(new JLabel("Arrow keys to change tile"));
+      panel.add(new JLabel("Left-click to write, right-click to read"));
       add(panel);
    }
    
