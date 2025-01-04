@@ -13,7 +13,7 @@ s#i0
 s#k0
 s#j0
 s#l0
-!361;g
+!403;g
 %\011SpriteSheetEditor%sMapPanel.java
 %\011SpriteSheetEditor%sPaletteWell.java
 %\011SpriteSheetEditor%sSSEMain.java
@@ -22,8 +22,9 @@ s#l0
 %\011SpriteSheetEditor%sSSEEngine.java
 %\011SpriteSheetEditor%sInfoPanel.java
 %\011SpriteSheetEditor%sCanvasPanel.java
+%\011SpriteSheetEditor%sSSEFloodFill.java
 %\011SpriteSheetEditor%sColorChooser.java
-!361;f
+!403;f
 %\011SpriteSheetEditor%sMapPanel.java
 %\011SpriteSheetEditor%sPaletteWell.java
 %\011SpriteSheetEditor%sSSEMain.java
@@ -32,4 +33,5 @@ s#l0
 %\011SpriteSheetEditor%sSSEEngine.java
 %\011SpriteSheetEditor%sInfoPanel.java
 %\011SpriteSheetEditor%sCanvasPanel.java
+%\011SpriteSheetEditor%sSSEFloodFill.java
 %\011SpriteSheetEditor%sColorChooser.java
