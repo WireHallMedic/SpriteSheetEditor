@@ -169,6 +169,13 @@ public class ControlPanel extends JPanel implements ActionListener
          gridColor = Color.GRAY;
       if(ae.getSource() == cyanGridB)
          gridColor = Color.CYAN;
+      if(ae.getSource() == copyB)
+      {
+         SSEEngine.copyTile();
+         pasteB.setEnabled(true);
+      }
+      if(ae.getSource() == pasteB)
+         SSEEngine.pasteTile();
       
       if(widthMod != 0 || heightMod != 0)
       {

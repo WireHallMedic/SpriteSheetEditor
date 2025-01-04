@@ -13,6 +13,7 @@ public class SSEEngine
 {
    private static BufferedImage fullImage = null;
    private static BufferedImage curTile = null;
+   private static int[][] clipboardArr = null;
    private static BufferedImage mapImage = null;
    private static int xLoc = 0;
    private static int yLoc = 0;
@@ -172,5 +173,25 @@ public class SSEEngine
    public static void writeColor(int x, int y)
    {
       writeColor(x, y, curColor);
+   }
+   
+   public static void copyTile()
+   {
+      clipboardArr = new int[tileWidth][tileHeight];
+      for(int x = 0; x < tileWidth; x++)
+      for(int y = 0; y < tileHeight; y++)
+      {
+         clipboardArr[x][y] = getPixelRGB(x + (xLoc * tileWidth), y + (yLoc * tileHeight));
+      }
+   }
+   
+   public static void pasteTile()
+   {
+      if(clipboardArr != null)
+      {
+         for(int x = 0; x < tileWidth; x++)
+         for(int y = 0; y < tileHeight; y++)
+            writeColor(x, y, new Color(clipboardArr[x][y]));
+      }
    }
 }
