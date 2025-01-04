@@ -25,10 +25,11 @@ public class ControlPanel extends JPanel implements ActionListener
    private JRadioButton fillB;
    private JButton copyB;
    private JButton pasteB;
-   private static BufferedImage copiedImage = null;
+   private static boolean doDrawOnClick = true;
    private static Color gridColor = null;
    
    public static Color getGridColor(){return gridColor;}
+   public static boolean drawOnClick(){return doDrawOnClick;}
    
    public ControlPanel(SSEMain p)
    {
@@ -169,6 +170,10 @@ public class ControlPanel extends JPanel implements ActionListener
          gridColor = Color.GRAY;
       if(ae.getSource() == cyanGridB)
          gridColor = Color.CYAN;
+      if(ae.getSource() == drawB)
+         doDrawOnClick = true;
+      if(ae.getSource() == fillB)
+         doDrawOnClick = false;
       if(ae.getSource() == copyB)
       {
          SSEEngine.copyTile();
