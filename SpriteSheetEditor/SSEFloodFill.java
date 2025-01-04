@@ -63,10 +63,12 @@ public class SSEFloodFill
       return isInBounds(x, y) && !closedMap[x][y];
    }
    
-   public void applyFill()
+   public void applyFill(Color newColor)
    {
-      Color c = new Color(targetColor);
+      System.out.println("Applying fill: " + locList.size());
       for(int i = 0; i < locList.size(); i++)
-         SSEEngine.writeColor(locList.elementAt(i)[0], locList.elementAt(i)[1], c);
+      {
+         SSEEngine.writeColor(locList.elementAt(i)[0], locList.elementAt(i)[1], newColor);
+      }
    }
 }

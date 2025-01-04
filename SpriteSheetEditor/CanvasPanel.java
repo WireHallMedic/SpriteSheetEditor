@@ -96,7 +96,15 @@ public class CanvasPanel extends JPanel implements MouseMotionListener, MouseLis
    public void mouseReleased(MouseEvent me)
    {
       if(me.getButton() == me.BUTTON1)
-         SSEEngine.writeColor(mouseLoc[0], mouseLoc[1]);
+      {
+         if(ControlPanel.drawOnClick())
+            SSEEngine.writeColor(mouseLoc[0], mouseLoc[1]);
+         else
+         {
+            SSEFloodFill ff = new SSEFloodFill(SSEEngine.getCurTile(), mouseLoc[0], mouseLoc[1]);
+            ff.applyFill(SSEEngine.getCurColor());
+         }
+      }
       if(me.getButton() == me.BUTTON3)
          SSEEngine.readColor(mouseLoc[0], mouseLoc[1]);
    }
