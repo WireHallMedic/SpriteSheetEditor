@@ -21,8 +21,8 @@ public class SSEEngine
    
    private static int fullImageWidth = 0;
    private static int fullImageHeight = 0;
-   private static int tileWidth = 24;
-   private static int tileHeight = 24;
+   private static int tileWidth = 16;
+   private static int tileHeight = 16;
    
    public static BufferedImage getCurTile(){return curTile;}
    public static BufferedImage getFullImage(){return fullImage;}
