@@ -27,8 +27,6 @@ public class SSEFloodFill
    private void start()
    {
       targetColor = img.getRGB(startX, startY);
-      int[] origin = {startX, startY};
-      locList.add(origin);
       process(startX, startY);
    }
    
@@ -65,7 +63,6 @@ public class SSEFloodFill
    
    public void applyFill(Color newColor)
    {
-      System.out.println("Applying fill: " + locList.size());
       for(int i = 0; i < locList.size(); i++)
       {
          SSEEngine.writeColor(locList.elementAt(i)[0], locList.elementAt(i)[1], newColor);
