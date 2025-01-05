@@ -48,26 +48,18 @@ public class ControlPanel extends JPanel implements ActionListener
       subpanel2.setLayout(new GridLayout(1, 5));
       subpanel1.add(new JLabel("Cursor Action:", SwingConstants.CENTER));
       drawB = new JRadioButton("Draw");
-      drawB.setFocusable(false);
+      setJButton(drawB, subpanel1);
       drawB.setSelected(true);
-      drawB.addActionListener(this);
-      subpanel1.add(drawB);
       fillB = new JRadioButton("Fill");
-      fillB.setFocusable(false);
-      fillB.addActionListener(this);
-      subpanel1.add(fillB);
+      setJButton(fillB, subpanel1);
       ButtonGroup drawTypeGroup = new ButtonGroup();
       drawTypeGroup.add(drawB);
       drawTypeGroup.add(fillB);
       copyB = new JButton("Copy Tile");
-      copyB.addActionListener(this);
-      copyB.setFocusable(false);
-      subpanel2.add(copyB);
+      setJButton(copyB, subpanel2);
       pasteB = new JButton("Paste Tile");
-      pasteB.addActionListener(this);
+      setJButton(pasteB, subpanel2);
       pasteB.setEnabled(false);
-      pasteB.setFocusable(false);
-      subpanel2.add(pasteB);
       panel.add(subpanel1);
       panel.add(subpanel2);
       add(panel);
@@ -79,26 +71,18 @@ public class ControlPanel extends JPanel implements ActionListener
       widthF.setFocusable(false);
       panel.add(widthF);
       widthPB = new JButton("+");
-      widthPB.addActionListener(this);
-      widthPB.setFocusable(false);
-      panel.add(widthPB);
+      setJButton(widthPB, panel);
       widthMB = new JButton("-");
-      widthMB.addActionListener(this);
-      widthMB.setFocusable(false);
-      panel.add(widthMB);
+      setJButton(widthMB, panel);
       panel.add(new JLabel(""));
       heightF = new JTextField("Tile Height:");
       heightF.setEditable(false);
       heightF.setFocusable(false);
       panel.add(heightF);
       heightPB = new JButton("+");
-      heightPB.addActionListener(this);
-      heightPB.setFocusable(false);
-      panel.add(heightPB);
+      setJButton(heightPB, panel);
       heightMB = new JButton("-");
-      heightMB.addActionListener(this);
-      heightMB.setFocusable(false);
-      panel.add(heightMB);
+      setJButton(heightMB, panel);
       add(panel);
       
       panel = new JPanel();
@@ -145,9 +129,11 @@ public class ControlPanel extends JPanel implements ActionListener
       update();
    }
    
-   private void setJButton(JButton button, JPanel panel)
+   private void setJButton(AbstractButton button, JPanel panel)
    {
-   
+      button.addActionListener(this);
+      button.setFocusable(false);
+      panel.add(button);
    }
    
    public void update()
