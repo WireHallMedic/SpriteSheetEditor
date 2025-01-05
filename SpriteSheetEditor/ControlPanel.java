@@ -198,5 +198,13 @@ public class ControlPanel extends JPanel implements ActionListener
    {
       if(name.toUpperCase().equals("NONE"))
          noGridB.doClick();
+      if(name.toUpperCase().equals("BLACK"))
+         blackGridB.doClick();
+      if(name.toUpperCase().equals("WHITE"))
+         whiteGridB.doClick();
+      if(name.toUpperCase().equals("GREY"))
+         greyGridB.doClick();
+      if(name.toUpperCase().equals("CYAN"))
+         cyanGridB.doClick();
    }
 }

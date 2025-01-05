@@ -245,23 +245,35 @@ public class SSEEngine
          File file = new File("./SSE Config.txt");  
          Scanner scn = new Scanner(file);  
          while (scn.hasNextLine())  
-            processConfig(scn.nextLine());  
+            processConfig(scn.nextLine(), controlPanel);  
       }
       catch(Exception ex)
       {
-         System.out.println("Unable to load file.");
+         System.out.println("Unable to load file. " + ex.toString());
       }
       controlPanel.update();
    }
    
-   private static void processConfig(String str)
+   private static void processConfig(String str, ControlPanel controlPanel)
    {
+      // skip comments and lines that do not conform to formatting
       if(str.startsWith("//"))
          return;
-      String val = str.split(" ")[1];
+      String val;
+      try
+      {
+         val = str.split(" ")[1];
+      }
+      catch(Exception ex)
+      {
+         return;
+      }
+      
       if(str.contains("TILE_WIDTH_PX"))
          setTileSize(Integer.parseInt(val), tileHeight);
       if(str.contains("TILE_HEIGHT_PX"))
          setTileSize(tileWidth, Integer.parseInt(val));
+      if(str.contains("GRID_TYPE"))
+         controlPanel.setGridByName(val);
    }
 }
