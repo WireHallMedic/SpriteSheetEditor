@@ -193,4 +193,10 @@ public class ControlPanel extends JPanel implements ActionListener
          update();
       }
    }
+   
+   public void setGridByName(String name)
+   {
+      if(name.upper().equals("NONE"))
+         noGridB.doClick();
+   }
 }
