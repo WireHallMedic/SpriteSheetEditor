@@ -18,6 +18,7 @@ public class SSEEngine
    private static int xLoc = 0;
    private static int yLoc = 0;
    private static Color curColor = Color.WHITE;
+   private static File lastLoaded = null;
    
    private static int fullImageWidth = 0;
    private static int fullImageHeight = 0;
@@ -60,6 +61,7 @@ public class SSEEngine
             fullImageHeight = 0;
          }
          setDependentImages();
+         lastLoaded = fc.getSelectedFile();
       }
    }
    
@@ -69,6 +71,8 @@ public class SSEEngine
       File workingDirectory = new File(System.getProperty("user.dir"));
       fc.setCurrentDirectory(workingDirectory);
       fc.setFileFilter(new FileNameExtensionFilter("PNG file","png"));
+      if(lastLoaded != null)
+         fc.setSelectedFile(lastLoaded);
       int returnVal = fc.showSaveDialog(component);
       if(returnVal == JFileChooser.APPROVE_OPTION)
       {
