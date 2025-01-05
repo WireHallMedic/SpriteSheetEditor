@@ -22,8 +22,8 @@ public class SSEEngine
    
    private static int fullImageWidth = 0;
    private static int fullImageHeight = 0;
-   private static int tileWidth = 16;
-   private static int tileHeight = 16;
+   private static int tileWidth = 24;
+   private static int tileHeight = 24;
    
    public static BufferedImage getCurTile(){return curTile;}
    public static BufferedImage getFullImage(){return fullImage;}
@@ -242,11 +242,24 @@ public class SSEEngine
    {
       try
       {
-         FileReader fileReader = new FileReader("./SSE Config.txt");
+         File file = new File("./SSE Config.txt");  
+         Scanner scn = new Scanner(file);  
+         while (scn.hasNextLine())  
+            processConfig(scn.nextLine());  
       }
       catch(Exception ex)
       {
          System.out.println("Unable to load file.");
       }
+      controlPanel.update();
+   }
+   
+   private static void processConfig(String str)
+   {
+      String val = str.split(" ")[1];
+      if(str.contains("TILE_WIDTH_PX"))
+         setTileSize(Integer.parseInt(val), tileHeight);
+      if(str.contains("TILE_HEIGHT_PX"))
+         setTileSize(tileWidth, Integer.parseInt(val));
    }
 }

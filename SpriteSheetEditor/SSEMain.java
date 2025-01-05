@@ -24,6 +24,8 @@ public class SSEMain extends JFrame implements ActionListener, KeyListener
       javax.swing.Timer timer = new javax.swing.Timer(1000 / 30, this);
       addKeyListener(this);
       timer.start();
+      
+      SSEEngine.loadConfig(controlPanel);
    }
    
    private void populate()
