@@ -88,26 +88,16 @@ public class ControlPanel extends JPanel implements ActionListener
       panel = new JPanel();
       panel.setLayout(new GridLayout(1, 6));
       noGridB = new JRadioButton("No Grid");
-      noGridB.setFocusable(false);
+      setJButton(noGridB, panel);
       noGridB.setSelected(true);
-      noGridB.addActionListener(this);
-      panel.add(noGridB);
       whiteGridB = new JRadioButton("White Grid");
-      whiteGridB.setFocusable(false);
-      whiteGridB.addActionListener(this);
-      panel.add(whiteGridB);
+      setJButton(whiteGridB, panel);
       blackGridB = new JRadioButton("Black Grid");
-      blackGridB.setFocusable(false);
-      blackGridB.addActionListener(this);
-      panel.add(blackGridB);
+      setJButton(blackGridB, panel);
       greyGridB = new JRadioButton("Grey Grid");
-      greyGridB.setFocusable(false);
-      greyGridB.addActionListener(this);
-      panel.add(greyGridB);
+      setJButton(greyGridB, panel);
       cyanGridB = new JRadioButton("Cyan Grid");
-      cyanGridB.setFocusable(false);
-      cyanGridB.addActionListener(this);
-      panel.add(cyanGridB);
+      setJButton(cyanGridB, panel);
       ButtonGroup gridGroup = new ButtonGroup();
       gridGroup.add(noGridB);
       gridGroup.add(whiteGridB);
@@ -117,14 +107,10 @@ public class ControlPanel extends JPanel implements ActionListener
       add(panel);
       
       loadB = new JButton("Load");
-      loadB.addActionListener(this);
-      loadB.setFocusable(false);
-      add(loadB);
+      setJButton(loadB, this);
       
       saveB = new JButton("Save");
-      saveB.addActionListener(this);
-      saveB.setFocusable(false);
-      add(saveB);
+      setJButton(saveB, this);
       
       update();
    }
