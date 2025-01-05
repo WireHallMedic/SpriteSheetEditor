@@ -237,4 +237,9 @@ public class SSEEngine
       for(int y = 0; y < tileHeight; y++)
          writeColor(x, (tileHeight - 1) - y, new Color(curArr[x][y]));
    }
+   
+   public static void loadConfig(ControlPanel controlPanel)
+   {
+      
+   }
 }
