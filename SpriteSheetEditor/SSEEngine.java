@@ -224,6 +224,12 @@ public class SSEEngine
    
    public static void mirrorVert()
    {
-      System.out.println("Mirror vert");
+      int[][] curArr = new int[tileWidth][tileHeight];
+      for(int x = 0; x < tileWidth; x++)
+      for(int y = 0; y < tileHeight; y++)
+         curArr[x][y] = getPixelRGB(x + (xLoc * tileWidth), y + (yLoc * tileHeight));
+      for(int x = 0; x < tileWidth; x++)
+      for(int y = 0; y < tileHeight; y++)
+         writeColor(x, (tileHeight - 1) - y, new Color(curArr[x][y]));
    }
 }
