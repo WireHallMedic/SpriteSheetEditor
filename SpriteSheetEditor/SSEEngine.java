@@ -82,6 +82,7 @@ public class SSEEngine
             if(!outfile.getName().endsWith(".png"))
                outfile = new File(outfile.getName() + ".png");
             ImageIO.write(fullImage, "png", outfile);
+         lastLoaded = outfile;
          }
          catch(Exception ex)
          {
