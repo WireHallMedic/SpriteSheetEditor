@@ -41,33 +41,31 @@ public class ControlPanel extends JPanel implements ActionListener
       setLayout(new GridLayout(5, 1));
       
       JPanel panel = new JPanel();
-      JPanel subpanel1 = new JPanel();
-      JPanel subpanel2 = new JPanel();
-      panel.setLayout(new GridLayout(1, 2));
-      subpanel1.setLayout(new GridLayout(1, 3));
-      subpanel2.setLayout(new GridLayout(1, 5));
-      subpanel1.add(new JLabel("Cursor Action:", SwingConstants.CENTER));
+      panel.setLayout(new GridLayout(1, 3));
+      panel.add(new JLabel("Cursor Action:", SwingConstants.CENTER));
       drawB = new JRadioButton("Draw");
-      setJButton(drawB, subpanel1);
+      setJButton(drawB, panel);
       drawB.setSelected(true);
       fillB = new JRadioButton("Fill");
-      setJButton(fillB, subpanel1);
+      setJButton(fillB, panel);
       ButtonGroup drawTypeGroup = new ButtonGroup();
       drawTypeGroup.add(drawB);
       drawTypeGroup.add(fillB);
+      add(panel);
+      
+      panel = new JPanel();
+      panel.setLayout(new GridLayout(1, 5));
       copyB = new JButton("Copy Tile");
-      setJButton(copyB, subpanel2);
+      setJButton(copyB, panel);
       pasteB = new JButton("Paste Tile");
-      setJButton(pasteB, subpanel2);
+      setJButton(pasteB, panel);
       pasteB.setEnabled(false);
       rotateB = new JButton("Rotate Tile");
-      setJButton(rotateB, subpanel2);
+      setJButton(rotateB, panel);
       mirrorVertB = new JButton("Mirror Vert");
-      setJButton(mirrorVertB, subpanel2);
+      setJButton(mirrorVertB, panel);
       mirrorHorizB = new JButton("Mirror Horiz");
-      setJButton(mirrorHorizB, subpanel2);
-      panel.add(subpanel1);
-      panel.add(subpanel2);
+      setJButton(mirrorHorizB, panel);
       add(panel);
       
       panel = new JPanel();
