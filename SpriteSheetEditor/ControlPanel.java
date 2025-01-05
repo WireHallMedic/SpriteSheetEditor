@@ -25,6 +25,9 @@ public class ControlPanel extends JPanel implements ActionListener
    private JRadioButton fillB;
    private JButton copyB;
    private JButton pasteB;
+   private JButton rotateB;
+   private JButton mirrorVertB;
+   private JButton mirrorHorizB;
    private static boolean doDrawOnClick = true;
    private static Color gridColor = null;
    
@@ -38,31 +41,35 @@ public class ControlPanel extends JPanel implements ActionListener
       setLayout(new GridLayout(5, 1));
       
       JPanel panel = new JPanel();
-      panel.setLayout(new GridLayout(1, 6));
-      panel.add(new JLabel("Cursor Action:", SwingConstants.CENTER));
+      JPanel subpanel1 = new JPanel();
+      JPanel subpanel2 = new JPanel();
+      panel.setLayout(new GridLayout(1, 2));
+      subpanel1.setLayout(new GridLayout(1, 3));
+      subpanel2.setLayout(new GridLayout(1, 5));
+      subpanel1.add(new JLabel("Cursor Action:", SwingConstants.CENTER));
       drawB = new JRadioButton("Draw");
       drawB.setFocusable(false);
       drawB.setSelected(true);
       drawB.addActionListener(this);
-      panel.add(drawB);
+      subpanel1.add(drawB);
       fillB = new JRadioButton("Fill");
       fillB.setFocusable(false);
       fillB.addActionListener(this);
-      panel.add(fillB);
+      subpanel1.add(fillB);
       ButtonGroup drawTypeGroup = new ButtonGroup();
       drawTypeGroup.add(drawB);
       drawTypeGroup.add(fillB);
-      panel.add(new JLabel(""));
       copyB = new JButton("Copy Tile");
       copyB.addActionListener(this);
       copyB.setFocusable(false);
-      panel.add(copyB);
+      subpanel2.add(copyB);
       pasteB = new JButton("Paste Tile");
       pasteB.addActionListener(this);
       pasteB.setEnabled(false);
       pasteB.setFocusable(false);
-      
-      panel.add(pasteB);
+      subpanel2.add(pasteB);
+      panel.add(subpanel1);
+      panel.add(subpanel2);
       add(panel);
       
       panel = new JPanel();
@@ -136,6 +143,11 @@ public class ControlPanel extends JPanel implements ActionListener
       add(saveB);
       
       update();
+   }
+   
+   private void setJButton(JButton button, JPanel panel)
+   {
+   
    }
    
    public void update()
