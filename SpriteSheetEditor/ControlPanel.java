@@ -112,11 +112,13 @@ public class ControlPanel extends JPanel implements ActionListener
       gridGroup.add(cyanGridB);
       add(panel);
       
+      panel = new JPanel();
+      panel.setLayout(new GridLayout(1, 2));
       loadB = new JButton("Load");
-      setJButton(loadB, this);
-      
+      setJButton(loadB, panel);
       saveB = new JButton("Save");
-      setJButton(saveB, this);
+      setJButton(saveB, panel);
+      add(panel);
       
       update();
    }
