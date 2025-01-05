@@ -133,6 +133,10 @@ public class ControlPanel extends JPanel implements ActionListener
    {
       widthF.setText("Tile Width: " + SSEEngine.getTileWidth());
       heightF.setText("Tile Height: " + SSEEngine.getTileHeight());
+      if(SSEEngine.getTileWidth() == SSEEngine.getTileHeight())
+         rotateB.setEnabled(true);
+      else
+         rotateB.setEnabled(false);
    }
    
    public void actionPerformed(ActionEvent ae)
