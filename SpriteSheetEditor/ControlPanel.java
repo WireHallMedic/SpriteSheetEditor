@@ -74,6 +74,7 @@ public class ControlPanel extends JPanel implements ActionListener
       widthF = new JTextField("Tile Width:");
       widthF.setEditable(false);
       widthF.setFocusable(false);
+      widthF.setHorizontalAlignment(SwingConstants.CENTER);
       panel.add(widthF);
       widthPB = new JButton("+");
       setJButton(widthPB, panel);
@@ -83,6 +84,7 @@ public class ControlPanel extends JPanel implements ActionListener
       heightF = new JTextField("Tile Height:");
       heightF.setEditable(false);
       heightF.setFocusable(false);
+      heightF.setHorizontalAlignment(SwingConstants.CENTER);
       panel.add(heightF);
       heightPB = new JButton("+");
       setJButton(heightPB, panel);
