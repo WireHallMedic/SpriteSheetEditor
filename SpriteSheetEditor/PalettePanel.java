@@ -59,4 +59,21 @@ public class PalettePanel extends JPanel implements ActionListener
    {
       new ColorChooser(SSEEngine.getCurColor());
    }
+   
+   public void setPalette(String indexStr, String colorStr)
+   {
+      try
+      {
+         int index = Integer.parseInt(indexStr);
+         int r = Integer.parseInt(colorStr.split(",")[0]);
+         int g = Integer.parseInt(colorStr.split(",")[1]);
+         int b = Integer.parseInt(colorStr.split(",")[2]);
+         Color c = new Color(r, g, b);
+         wellArr[index].setColor(c);
+      }
+      catch(Exception ex)
+      {
+         System.out.println("Unable to set color #" + indexStr + ": " + colorStr);
+      }
+   }
 }

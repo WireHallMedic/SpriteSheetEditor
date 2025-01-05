@@ -25,7 +25,7 @@ public class SSEMain extends JFrame implements ActionListener, KeyListener
       addKeyListener(this);
       timer.start();
       
-      SSEEngine.loadConfig(controlPanel);
+      SSEEngine.loadConfig(controlPanel, palettePanel);
    }
    
    private void populate()

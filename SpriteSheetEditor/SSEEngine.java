@@ -238,14 +238,14 @@ public class SSEEngine
          writeColor(x, (tileHeight - 1) - y, new Color(curArr[x][y]));
    }
    
-   public static void loadConfig(ControlPanel controlPanel)
+   public static void loadConfig(ControlPanel controlPanel, PalettePanel palettePanel)
    {
       try
       {
          File file = new File("./SSE Config.txt");  
          Scanner scn = new Scanner(file);  
          while (scn.hasNextLine())  
-            processConfig(scn.nextLine(), controlPanel);  
+            processConfig(scn.nextLine(), controlPanel, palettePanel);  
       }
       catch(Exception ex)
       {
@@ -254,7 +254,7 @@ public class SSEEngine
       controlPanel.update();
    }
    
-   private static void processConfig(String str, ControlPanel controlPanel)
+   private static void processConfig(String str, ControlPanel controlPanel, PalettePanel palettePanel)
    {
       // skip comments and lines that do not conform to formatting
       if(str.startsWith("//"))
@@ -277,5 +277,7 @@ public class SSEEngine
          setTileSize(tileWidth, Integer.parseInt(val));
       if(str.contains("GRID_TYPE"))
          controlPanel.setGridByName(val);
+      if(str.contains("PALETTE_COLOR_"))
+         palettePanel.setPalette(comm.replace("PALETTE_COLOR_", ""), val);
    }
 }
