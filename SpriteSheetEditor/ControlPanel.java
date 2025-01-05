@@ -173,11 +173,11 @@ public class ControlPanel extends JPanel implements ActionListener
       if(ae.getSource() == pasteB)
          SSEEngine.pasteTile();
       if(ae.getSource() == rotateB)
-         SSEEngine.pasteTile();
+         SSEEngine.rotate();
       if(ae.getSource() == mirrorHorizB)
-         SSEEngine.pasteTile();
+         SSEEngine.mirrorHoriz();
       if(ae.getSource() == mirrorVertB)
-         SSEEngine.pasteTile();
+         SSEEngine.mirrorVert();
       
       if(widthMod != 0 || heightMod != 0)
       {

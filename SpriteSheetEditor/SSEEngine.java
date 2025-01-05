@@ -199,4 +199,21 @@ public class SSEEngine
             writeColor(x, y, new Color(clipboardArr[x][y]));
       }
    }
+   
+   public static void rotate()
+   {
+      System.out.println("rotate");
+   
+   }
+   
+   public static void mirrorHoriz()
+   {
+      System.out.println("Mirror horiz");
+   
+   }
+   
+   public static void mirrorVert()
+   {
+      System.out.println("Mirror vert");
+   }
 }
