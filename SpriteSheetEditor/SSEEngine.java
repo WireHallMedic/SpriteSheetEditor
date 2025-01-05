@@ -240,6 +240,13 @@ public class SSEEngine
    
    public static void loadConfig(ControlPanel controlPanel)
    {
-      
+      try
+      {
+         FileReader fileReader = new FileReader("./SSE Config.txt");
+      }
+      catch(Exception ex)
+      {
+         System.out.println("Unable to load file.");
+      }
    }
 }
