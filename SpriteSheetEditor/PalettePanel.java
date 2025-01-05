@@ -9,6 +9,23 @@ public class PalettePanel extends JPanel implements ActionListener
    private SSEMain parent;
    private JPanel curColorPanel;
    private JButton setColorB;
+   private PaletteWell[] wellArr;
+   private static final Color[] defaultList = {
+      Color.WHITE,
+      Color.RED,
+      new Color(160, 32, 240), // purple
+      Color.LIGHT_GRAY,
+      Color.ORANGE,
+      Color.CYAN,
+      Color.GRAY,
+      Color.YELLOW,
+      Color.PINK,
+      Color.DARK_GRAY,
+      Color.GREEN,
+      Color.MAGENTA,
+      Color.BLACK,
+      Color.BLUE,
+      new Color(150, 75, 0)}; // brown
    
    public PalettePanel(SSEMain p)
    {
@@ -23,25 +40,12 @@ public class PalettePanel extends JPanel implements ActionListener
       setColorB.addActionListener(this);
       add(setColorB);
       
-      add(new PaletteWell(Color.WHITE));
-      add(new PaletteWell(Color.RED));
-      add(new PaletteWell(new Color(160, 32, 240))); // purple
-      
-      add(new PaletteWell(Color.LIGHT_GRAY));
-      add(new PaletteWell(Color.ORANGE));
-      add(new PaletteWell(Color.CYAN));
-      
-      add(new PaletteWell(Color.GRAY));
-      add(new PaletteWell(Color.YELLOW));
-      add(new PaletteWell(Color.PINK));
-      
-      add(new PaletteWell(Color.DARK_GRAY));
-      add(new PaletteWell(Color.GREEN));
-      add(new PaletteWell(Color.MAGENTA));
-      
-      add(new PaletteWell(Color.BLACK));
-      add(new PaletteWell(Color.BLUE));
-      add(new PaletteWell(new Color(150, 75, 0))); // brown
+      wellArr = new PaletteWell[defaultList.length];
+      for(int i = 0; i < defaultList.length; i++)
+      {
+         wellArr[i] = new PaletteWell(defaultList[i]);
+         add(wellArr[i]);
+      }
       
       update();
    }

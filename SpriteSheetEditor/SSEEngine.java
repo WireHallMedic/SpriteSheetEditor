@@ -260,8 +260,10 @@ public class SSEEngine
       if(str.startsWith("//"))
          return;
       String val;
+      String comm;
       try
       {
+         comm = str.split(" ")[0];
          val = str.split(" ")[1];
       }
       catch(Exception ex)
