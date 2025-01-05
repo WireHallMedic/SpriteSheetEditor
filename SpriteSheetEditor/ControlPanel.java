@@ -196,7 +196,7 @@ public class ControlPanel extends JPanel implements ActionListener
    
    public void setGridByName(String name)
    {
-      if(name.upper().equals("NONE"))
+      if(name.toUpperCase().equals("NONE"))
          noGridB.doClick();
    }
 }

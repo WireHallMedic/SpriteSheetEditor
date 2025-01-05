@@ -256,7 +256,7 @@ public class SSEEngine
    
    private static void processConfig(String str)
    {
-      if(str.startsWith("//")
+      if(str.startsWith("//"))
          return;
       String val = str.split(" ")[1];
       if(str.contains("TILE_WIDTH_PX"))
