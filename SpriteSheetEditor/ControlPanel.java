@@ -63,9 +63,9 @@ public class ControlPanel extends JPanel implements ActionListener
       pasteB.setEnabled(false);
       rotateB = new JButton("Rotate Tile");
       setJButton(rotateB, panel);
-      mirrorVertB = new JButton("Mirror Vert");
+      mirrorVertB = new JButton("Flip Vert");
       setJButton(mirrorVertB, panel);
-      mirrorHorizB = new JButton("Mirror Horiz");
+      mirrorHorizB = new JButton("Flip Horiz");
       setJButton(mirrorHorizB, panel);
       add(panel);
       
