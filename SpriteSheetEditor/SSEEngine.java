@@ -202,8 +202,13 @@ public class SSEEngine
    
    public static void rotate()
    {
-      System.out.println("rotate");
-   
+      int[][] curArr = new int[tileWidth][tileHeight];
+      for(int x = 0; x < tileWidth; x++)
+      for(int y = 0; y < tileHeight; y++)
+         curArr[x][y] = getPixelRGB(x + (xLoc * tileWidth), y + (yLoc * tileHeight));
+      for(int x = 0; x < tileWidth; x++)
+      for(int y = 0; y < tileHeight; y++)
+         writeColor((tileWidth - 1) - y, x, new Color(curArr[x][y]));
    }
    
    public static void mirrorHoriz()
