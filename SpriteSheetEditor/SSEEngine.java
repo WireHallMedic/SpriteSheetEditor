@@ -139,10 +139,15 @@ public class SSEEngine
    
    private static void setPixelColor(int x, int y, Color c)
    {
+      setPixelColor(x, y, c.getRGB());
+   }
+   
+   private static void setPixelColor(int x, int y, int c)
+   {
       if(x < 0 || x >= fullImageWidth ||
          y < 0 || y >= fullImageHeight)
          return;
-      fullImage.setRGB(x, y, c.getRGB());
+      fullImage.setRGB(x, y, c);
    }
 
    public static void setCurColor(Color c)

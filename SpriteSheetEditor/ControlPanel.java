@@ -54,7 +54,8 @@ public class ControlPanel extends JPanel implements ActionListener
       add(panel);
       
       panel = new JPanel();
-      panel.setLayout(new GridLayout(1, 5));
+      panel.setLayout(new GridLayout(1, 6));
+      panel.add(new JLabel("Tile Action:", SwingConstants.CENTER));
       copyB = new JButton("Copy Tile");
       setJButton(copyB, panel);
       pasteB = new JButton("Paste Tile");
@@ -170,6 +171,12 @@ public class ControlPanel extends JPanel implements ActionListener
          pasteB.setEnabled(true);
       }
       if(ae.getSource() == pasteB)
+         SSEEngine.pasteTile();
+      if(ae.getSource() == rotateB)
+         SSEEngine.pasteTile();
+      if(ae.getSource() == mirrorHorizB)
+         SSEEngine.pasteTile();
+      if(ae.getSource() == mirrorVertB)
          SSEEngine.pasteTile();
       
       if(widthMod != 0 || heightMod != 0)
