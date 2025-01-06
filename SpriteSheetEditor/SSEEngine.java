@@ -287,30 +287,26 @@ public class SSEEngine
    }
    
    private static void createConfigFile()
-   {/*
+   {
 		PrintWriter outFile = null;
 		try
 		{
-			outFile = new PrintWriter(FILE_NAME);
+			outFile = new PrintWriter(CONFIG_FILE);
 		}
 		catch(Exception ex)
 		{
-			String errorMessage = "Error: Cannot write to " + FILE_NAME;
+			String errorMessage = "Error: Cannot write to " + CONFIG_FILE;
 			JOptionPane.showMessageDialog(null, errorMessage, "Exception Occured", JOptionPane.ERROR_MESSAGE);
 		}
 		
-		for(String line : output)
-			outFile.println(line);
+		outFile.println("// Grid options: NONE, BLACK, WHITE, GREY, CYAN");
+		outFile.println("// Set palette colors (0-15) with 'PALETTE_COLOR_# #,#,#' no spaces in the rgb values.");
+		outFile.println("");
+		outFile.println("TILE_WIDTH_PX 24");
+		outFile.println("TILE_HEIGHT_PX 24");
+		outFile.println("GRID_TYPE WHITE");
 			
 		outFile.close();
 	}
-      
-      // Grid options: NONE, BLACK, WHITE, GREY, CYAN
-// Set palette colors (0-15) with 'PALETTE_COLOR_# #,#,#' no spaces in the rgb values.
-
-TILE_WIDTH_PX 24
-TILE_HEIGHT_PX 24
-GRID_TYPE WHITE*/
-
-   }
+   
 }
