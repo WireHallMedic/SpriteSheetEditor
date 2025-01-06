@@ -1,6 +1,0 @@
-// Grid options: NONE, BLACK, WHITE, GREY, CYAN
-// Set palette colors (0-15) with 'PALETTE_COLOR_# #,#,#' no spaces in the rgb values.
-
-TILE_WIDTH_PX 24
-TILE_HEIGHT_PX 24
-GRID_TYPE WHITE

@@ -19,6 +19,7 @@ public class SSEEngine
    private static int yLoc = 0;
    private static Color curColor = Color.WHITE;
    private static File lastLoaded = null;
+   private static final String CONFIG_FILE = "./SSE Config.txt";
    
    private static int fullImageWidth = 0;
    private static int fullImageHeight = 0;
@@ -242,10 +243,14 @@ public class SSEEngine
    {
       try
       {
-         File file = new File("./SSE Config.txt");  
+         File file = new File(CONFIG_FILE);  
          Scanner scn = new Scanner(file);  
          while (scn.hasNextLine())  
             processConfig(scn.nextLine(), controlPanel, palettePanel);  
+      }
+      catch(FileNotFoundException fnfEx)
+      {
+         createConfigFile();
       }
       catch(Exception ex)
       {
@@ -279,5 +284,33 @@ public class SSEEngine
          controlPanel.setGridByName(val);
       if(str.contains("PALETTE_COLOR_"))
          palettePanel.setPalette(comm.replace("PALETTE_COLOR_", ""), val);
+   }
+   
+   private static void createConfigFile()
+   {/*
+		PrintWriter outFile = null;
+		try
+		{
+			outFile = new PrintWriter(FILE_NAME);
+		}
+		catch(Exception ex)
+		{
+			String errorMessage = "Error: Cannot write to " + FILE_NAME;
+			JOptionPane.showMessageDialog(null, errorMessage, "Exception Occured", JOptionPane.ERROR_MESSAGE);
+		}
+		
+		for(String line : output)
+			outFile.println(line);
+			
+		outFile.close();
+	}
+      
+      // Grid options: NONE, BLACK, WHITE, GREY, CYAN
+// Set palette colors (0-15) with 'PALETTE_COLOR_# #,#,#' no spaces in the rgb values.
+
+TILE_WIDTH_PX 24
+TILE_HEIGHT_PX 24
+GRID_TYPE WHITE*/
+
    }
 }
