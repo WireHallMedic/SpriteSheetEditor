@@ -57,6 +57,8 @@ public class SSEEngine
          catch(Exception ex)
          {
             System.out.println(ex.toString());
+   			String errorMessage = "Exception when trying to load file '" + fc.getSelectedFile().toString() + "'\n" + ex.toString();
+   			JOptionPane.showMessageDialog(null, errorMessage, "Exception Occured", JOptionPane.ERROR_MESSAGE);
             fullImage = null;
             fullImageWidth = 0;
             fullImageHeight = 0;
@@ -87,7 +89,8 @@ public class SSEEngine
          }
          catch(Exception ex)
          {
-            System.out.println(ex.toString());
+   			String errorMessage = "Exception occured when saving:\n" + ex.toString();
+   			JOptionPane.showMessageDialog(null, errorMessage, "Exception Occured", JOptionPane.ERROR_MESSAGE);
          }
       }
    }
@@ -254,7 +257,8 @@ public class SSEEngine
       }
       catch(Exception ex)
       {
-         System.out.println("Unable to load file. " + ex.toString());
+			String errorMessage = "Error: Cannot load " + CONFIG_FILE + "\n" + ex.toString();
+			JOptionPane.showMessageDialog(null, errorMessage, "Exception Occured", JOptionPane.ERROR_MESSAGE);
       }
       controlPanel.update();
    }
@@ -273,6 +277,8 @@ public class SSEEngine
       }
       catch(Exception ex)
       {
+			String errorMessage = "Error: Unable to process config line '" + str + "'\n" + ex.toString();
+			JOptionPane.showMessageDialog(null, errorMessage, "Exception Occured", JOptionPane.ERROR_MESSAGE);
          return;
       }
       
@@ -295,7 +301,7 @@ public class SSEEngine
 		}
 		catch(Exception ex)
 		{
-			String errorMessage = "Error: Cannot write to " + CONFIG_FILE;
+			String errorMessage = "Error: Cannot write to " + CONFIG_FILE + "\n" + ex.toString();
 			JOptionPane.showMessageDialog(null, errorMessage, "Exception Occured", JOptionPane.ERROR_MESSAGE);
 		}
 		
