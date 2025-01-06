@@ -266,7 +266,7 @@ public class SSEEngine
    private static void processConfig(String str, ControlPanel controlPanel, PalettePanel palettePanel)
    {
       // skip comments and lines that do not conform to formatting
-      if(str.startsWith("//"))
+      if(str.startsWith("//") || str.contains(" ") == false)
          return;
       String val;
       String comm;
